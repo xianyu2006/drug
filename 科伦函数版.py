@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#用xpath解析数据，抓取名称和价格，存入csv,这次爬取全部网页，用定义函数的方法      2019.4.14
+#用xpath解析数据，抓取名称和价格，存入csv,这次爬取全部网页，用定义函数的方法      2019.4.18
 
 import requests
 from lxml import etree
@@ -28,29 +28,25 @@ def get_one_page(url):
     return response.text
 
 #解析网页内容，并返回结果
-def parse_one_page(html):    #这里的content就是html.text
-    
+def parse_one_page(html):    
     selector= etree.HTML(html)
     infos = selector.xpath('//*[@id="pro_list1"]//li')
-    #books = []
     for info in infos:
         yield(
         info.xpath('.//p[1]/a//text()')[0] ,  #这里的错误是少一个逗号
         info.xpath('.//p[6]/span//text()')[0]
         )
-#主函数
+#主函数，传入参数
 def main():
     url ="http://klyp.kelunyy.com/goods-filter-1247-0-0-0-0-{}.html".format(i)
     html = get_one_page(url)
     dy = parse_one_page(html)
-    
     for info in dy:
-        
         writer.writerow(info)
         print(info)          #这里将字典写入csv中的解决办法是yield后面的{}改为（）,同时将
 #遍历所有网页      
 if __name__ == '__main__':
     for i in range(215):
-        main()
+        main()    #这里面是空的，没有参数
         time.sleep(1)
 
