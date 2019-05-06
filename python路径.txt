@@ -1,0 +1,3 @@
+d:\Users\Administrator\AppData\Local\Programs\Python\Python37
+
+anac  d:\Users\Administrator\Anaconda3
