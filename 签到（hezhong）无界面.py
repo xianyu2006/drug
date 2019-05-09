@@ -26,5 +26,5 @@ browser.find_element_by_xpath('/html/body/div[3]/div/div[1]/div[1]/div[2]/div[3]
 time.sleep(3)
 browser.find_element_by_xpath('//*[@id="qiandao"]').click()
 time.sleep(5)
-browser.save_screenshot('kelun5.png')
+browser.save_screenshot('kelun5.png')   #这行代码的作用是截屏，因为是无界面，所以用来截取签到成功的页面
 browser.quit()
